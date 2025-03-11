@@ -1,0 +1,45 @@
+To run the Encrypted Network Traffic Classification with Higher Order Graph Neural Network project, follow these steps:
+
+1. Clone the Repository
+
+git clone https://github.com/zuluokonkwo/Encrypted-Network-Traffic-Classification-with-Higher-Order-Graph-Neural-Network.git
+cd Encrypted-Network-Traffic-Classification-with-Higher-Order-Graph-Neural-Network
+2. Install Dependencies
+Ensure you have Python installed (preferably Python 3.8+), then install the required dependencies.
+
+pip install -r requirements.txt
+If a requirements.txt file is not provided, manually install the required libraries such as:
+
+
+pip install numpy pandas torch torchvision networkx scikit-learn
+3. Prepare Data
+Download and extract vpn.zip inside the Data/ folder.
+Preprocess the PCAP files to convert them into the required graph format.
+Run the PCAP processing scripts in sequence:
+
+
+python PCAP processing/ethernet_remove.py
+python PCAP processing/mask_IP.py
+python PCAP processing/udp_pad.py
+python PCAP processing/pcap_to_csv.py
+4. Generate Graphs
+Run the script to convert preprocessed PCAP data into graph structures.
+
+
+python Model/Graph_generation.py
+5. Train the Model
+Run the training script:
+
+python Model/Model.py
+6. Test the Model
+Once trained, evaluate the model using:
+
+
+python Model/Test.py
+7. Results and Analysis
+The trained model will be evaluated on the ISCXVPN and USTC-TFC datasets.
+You can modify Model.py and Test.py to adjust hyperparameters or add logging.
+Notes
+Ensure the dataset files are correctly placed in the Data/ folder.
+Modify the scripts if necessary to match your dataset format.
+If using a GPU, ensure PyTorch is installed with CUDA support.
